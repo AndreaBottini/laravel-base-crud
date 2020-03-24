@@ -7,15 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="{{Route('motorcycles.create')}}">Vai al FORM</a>
+    
+    <button action=""><a href="{{Route('motorcycles.create')}}">Vai al form</a></button>
  @foreach ($motorcycles as $motorcycle)
  <ul>
-     <li>{{$motorcycle['producer']}}</li>
-     <li>{{$motorcycle['model']}}</li>
-     <li>{{$motorcycle['price']}}</li>
-     <li>{{$motorcycle['year']}}</li>
-     <li>{{$motorcycle['color']}}</li>
-     <li>{{$motorcycle['description']}}</li>
+     <li>{{$motorcycle->producer}}</li>
+     <li>{{$motorcycle->model}}</li>
+     <li>{{$motorcycle->price}}</li>
+     <li>{{$motorcycle->year}}</li>
+     <li>{{$motorcycle->color}}</li>
+     <li>{{$motorcycle->description}}</li>
  </ul>    
  @endforeach
 </body>
