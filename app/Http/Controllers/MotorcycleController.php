@@ -64,10 +64,11 @@ class MotorcycleController extends Controller
 
         if($saved == true)
         {
-            return redirect()->route('motorcycles.index');
+            $motorcycle = Motorcycle::orderBy('id', 'desc')->first();
+            return redirect()->route('motorcycles.show', compact('motorcycle'));
         }
         else {
-            abort(404);
+            abort('404');
         }
         
     }

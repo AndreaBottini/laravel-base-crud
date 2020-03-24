@@ -15,6 +15,7 @@
         <li>Anno: {{$motorcycle->year}}</li>
         <li>Colore: {{$motorcycle->color}}</li>
         <li>Descrizione: {{$motorcycle->description}}</li>
-    </ul>    
+    </ul> 
+    <button action=""><a href="{{Route('motorcycles.index')}}">Vai alla home</a></button>   
 </body>
 </html>
