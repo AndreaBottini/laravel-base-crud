@@ -41,17 +41,23 @@ class MotorcycleController extends Controller
         // dd($request->all());
         $data = $request->all();
         $motorcycle = new Motorcycle;
-        $motorcycle->producer = $data['producer'];
-        $motorcycle->model = $data['model'];
-        $motorcycle->price = $data['price'];
-        $motorcycle->year = $data['year'];
-        $motorcycle->color = $data['color'];
-        $motorcycle->description = $data['description'];
+
+        // $motorcycle->producer = $data['producer'];
+        // $motorcycle->model = $data['model'];
+        // $motorcycle->price = $data['price'];
+        // $motorcycle->year = $data['year'];
+        // $motorcycle->color = $data['color'];
+        // $motorcycle->description = $data['description'];
+
+        $motorcycle->fill($data);
         $saved = $motorcycle->save();
 
         if($saved == true)
         {
             return redirect()->route('motorcycles.index');
+        }
+        else {
+            abort(404);
         }
         
     }
