@@ -78,9 +78,12 @@ class MotorcycleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Motorcycle $motorcycle)
     {
-        //
+        if(empty($motorcycle)){
+            abort('404');
+        }
+        return view('motorcycles.show', compact('motorcycle'));
     }
 
     /**
