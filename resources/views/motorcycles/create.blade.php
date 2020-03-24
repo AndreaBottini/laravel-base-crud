@@ -7,16 +7,40 @@
     <title>Document</title>
 </head>
 <body>
+<h1>Inserisci i dati della moto</h1>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+        @foreach ($errors->all() as $error)
+           <li>{{ $error }}</li>
+       @endforeach
+        </ul> 
+    </div>
+@endif
 <form action="{{Route('motorcycles.store')}}" method="post">
     @csrf
+    <div>
+        <input type="text" name="producer" value="" placeholder="producer">
+    </div>
+    <div>
+        <input type="text" name="model" value="" placeholder="model">
+    </div>
+    <div>
+        <input type="text" name="price" value="" placeholder="price">
+    </div>
+    <div>
+        <input type="text" name="year" value="" placeholder="year">
+    </div>
+    <div>   
+        <input type="text" name="color" value="" placeholder="color">
+    </div>
+    <div>
+        <input type="text" name="description" value="" placeholder="description">
+    </div>
+    <div>
+        <button type="submit">Salva</button>
+    </div>
     
-    <input type="text" name="producer" value="" placeholder="producer">
-    <input type="text" name="model" value="" placeholder="model">
-    <input type="text" name="price" value="" placeholder="price">
-    <input type="text" name="year" value="" placeholder="year">
-    <input type="text" name="color" value="" placeholder="color">
-    <input type="text" name="description" value="" placeholder="description">
-    <button type="submit">Salva</button>
     @method('POST')
 
 

@@ -40,6 +40,16 @@ class MotorcycleController extends Controller
     {
         // dd($request->all());
         $data = $request->all();
+
+        $request->validate([
+            'producer' => 'required|string|max:60',
+            'model' => 'required|string|max:50',
+            'price' => 'required|numeric|min:1|max:9999',
+            'year' => 'required|string|max:4',
+            'color' => 'required|string|',
+            'description' => 'required|string'
+        ]);
+
         $motorcycle = new Motorcycle;
 
         // $motorcycle->producer = $data['producer'];
