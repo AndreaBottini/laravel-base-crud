@@ -93,9 +93,13 @@ class MotorcycleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Motorcycle $motorcycle)
     {
-        //
+        // dd($motorcycle);
+        if(empty($motorcycle)){
+            abort('404');
+        }
+        return view('motorcycles.update', compact('motorcycle'));
     }
 
     /**
@@ -107,7 +111,30 @@ class MotorcycleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $motorcycle = Motorcycle::find($id);
+        if(empty($motorcycle)){
+            abort('404');
+        }
+        $data = $request->all();
+        $request->validate([
+            'producer' => 'required|string|max:60',
+            'model' => 'required|string|max:50',
+            'price' => 'required|numeric|min:1|max:9999',
+            'year' => 'required|string|max:4',
+            'color' => 'required|string|',
+            'description' => 'required|string'
+        ]);
+
+        $updated = $motorcycle->update($data);
+        // dd($updated);
+        if($updated == true)
+        {
+            $motorcycle = Motorcycle::find($id);
+            return redirect()->route('motorcycles.update', compact('motorcycle'));
+        }
+        else {
+            abort('404');
+        }
     }
 
     /**
@@ -116,8 +143,10 @@ class MotorcycleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Motorcycle $motorcycle)
     {
-        //
+        $motorcycle->delete();
+
+        return view('motorcycles.index');
     }
 }

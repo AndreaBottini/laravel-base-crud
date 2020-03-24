@@ -17,7 +17,12 @@
      <li>{{$motorcycle->year}}</li>
      <li>{{$motorcycle->color}}</li>
      <li>{{$motorcycle->description}}</li>
+     <form action="{{Route('motorcycles.destroy', $motorcycle)}}" method="POST">
+        @csrf
+        @method('DELETE');
+        <button type="submit">DELETE</button>
+    </form>   
  </ul>    
- @endforeach
+ @endforeach 
 </body>
 </html>
