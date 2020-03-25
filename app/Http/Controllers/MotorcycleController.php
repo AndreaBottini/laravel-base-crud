@@ -145,8 +145,13 @@ class MotorcycleController extends Controller
      */
     public function destroy(Motorcycle $motorcycle)
     {
-        $motorcycle->delete();
+        $id = $motorcycle->id;
+        $deleted = $motorcycle->delete();
+        $data = [
+            'id' => $id,
+            'motorcycles' => Motorcycle::all()
+        ];
 
-        return view('motorcycles.index');
+        return view('motorcycles.index', $data);
     }
 }

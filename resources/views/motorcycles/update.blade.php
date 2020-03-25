@@ -49,10 +49,6 @@
         <input type="submit" value="Invia">    
         @endif
     </div>
-   
-   
-
-
 </form>
 
 </body>
